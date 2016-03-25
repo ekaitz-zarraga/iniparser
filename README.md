@@ -2,6 +2,12 @@
 
 Simple and direct INI parser in C.
 
+- It allows key-value pairs separated by column (`:`) or equals (`=`).
+
+- It allows hashtag (`#`) or semicolon (`;`) for comments.
+
+- Does not allow inline comments.
+
 ## Compilation
 
 ``` Bash
