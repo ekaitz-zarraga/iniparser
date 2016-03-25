@@ -14,5 +14,5 @@ int process( char * section, char * key, char * value, void * data_struct){
 
 int main(int argc, char * argv[]){
 	data_structure * data;
-	parse_ini("test/example.ini", data, process);
+	return parse_ini("test/example.ini", data, process);
 }
