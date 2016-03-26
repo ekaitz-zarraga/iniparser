@@ -18,7 +18,7 @@ OBJS	= $(addsuffix .o, $(addprefix $(OBJDIR)/, $(BASENM)) )
 # Target library file
 TARGET = libiniparser.a
 
-INSTALL_PREFIX	?= /usr/local
+INSTALL_PREFIX	?= /usr
 HEADERS	= include/iniparse.h
 
 all: $(TARGET)
