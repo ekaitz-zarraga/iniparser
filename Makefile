@@ -18,6 +18,9 @@ OBJS	= $(addsuffix .o, $(addprefix $(OBJDIR)/, $(BASENM)) )
 # Target library file
 TARGET = libiniparser.a
 
+INSTALL_PREFIX	?= /usr/local
+HEADERS	= include/iniparse.h
+
 all: $(TARGET)
 
 # TARGET need all the objects
@@ -33,9 +36,16 @@ $(OBJS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 clean:
 	rm -rf $(OBJDIR) $(TARGET)
 
-install: #TODO
-	# copy ./include/* in /usr/include/iniparse/
-	# copy $(TARGET) in /usr/lib/iniparse
-	echo "Not implemented yet"
+install: all
+	# Install headers
+	mkdir -p $(INSTALL_PREFIX)/include/iniparser/
+	cp $(HEADERS) $(INSTALL_PREFIX)/include/iniparser/
+	# Install library
+	mkdir -p $(INSTALL_PREFIX)/lib/iniparser/
+	cp $(TARGET) $(INSTALL_PREFIX)/lib/iniparser/
+
+uninstall:
+	rm -rf $(INSTALL_PREFIX)/include/iniparser/
+	rm -rf $(INSTALL_PREFIX)/lib/iniparser/
 
 .PHONY: all clean install
