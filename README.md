@@ -17,10 +17,13 @@ Simple and direct INI parser in C.
 Will create `libiniparser.a` file in the root directory. Link it and include
 header files as usual.
 
-> make install is a TODO, but if you want to install, copy `libiniparser.a`
-> file to `/usr/lib` or similar and `include/iniparser.h` to `/usr/include`.
-> Use it by including the header file and linking the library in your project.
+``` Bash
+.../iniparser$ make install
+```
 
+Will install `libiniparser.a` in `/usr/lib/iniparser/` and `include/iniparse.h`
+in `/usr/include/iniparser/`. Default installation prefix can be changed
+exporting `INSTALL_PREFIX` before running `make install`.
 
 ## How to
 
