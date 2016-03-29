@@ -27,6 +27,6 @@ static char * find_char(char * s, char * ch_list);
 
 
 /**
- *	Parse input filename using handler function and provided structure
+ * Parse input filename using handler function and provided structure
  */
 int parse_ini (char * filename, void * data_struct, callback handler );
