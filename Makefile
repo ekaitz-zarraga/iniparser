@@ -45,7 +45,7 @@ install: all
 	cp $(TARGET) $(INSTALL_PREFIX)/lib/
 
 uninstall:
-	rm -rf $(INSTALL_PREFIX)/$(HEADERS)
-	rm -rf $(INSTALL_PREFIX)/lib/$(TARGET)
+	rm -f $(INSTALL_PREFIX)/$(HEADERS)
+	rm -f $(INSTALL_PREFIX)/lib/$(TARGET)
 
 .PHONY: all clean install
