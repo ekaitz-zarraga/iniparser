@@ -38,14 +38,14 @@ clean:
 
 install: all
 	# Install headers
-	mkdir -p $(INSTALL_PREFIX)/include/iniparser/
-	cp $(HEADERS) $(INSTALL_PREFIX)/include/iniparser/
+	mkdir -p $(INSTALL_PREFIX)/include/
+	cp $(HEADERS) $(INSTALL_PREFIX)/include/
 	# Install library
-	mkdir -p $(INSTALL_PREFIX)/lib/iniparser/
-	cp $(TARGET) $(INSTALL_PREFIX)/lib/iniparser/
+	mkdir -p $(INSTALL_PREFIX)/lib/
+	cp $(TARGET) $(INSTALL_PREFIX)/lib/
 
 uninstall:
-	rm -rf $(INSTALL_PREFIX)/include/iniparser/
-	rm -rf $(INSTALL_PREFIX)/lib/iniparser/
+	rm -rf $(INSTALL_PREFIX)/include/
+	rm -rf $(INSTALL_PREFIX)/lib/
 
 .PHONY: all clean install
