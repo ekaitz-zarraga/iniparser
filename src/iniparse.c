@@ -86,7 +86,7 @@ parse_ini (char * filename, void * data, callback handler ){
 
             *end = '\0'; //Section goes from _start to _end
 
-            section = (char *) realloc( section, sizeof(char) * (end - start + 1) );
+            section = (char *) realloc( section, sizeof(char) * ( strlen(start) + 1) );
             if( !section ){
                 ERROR( "Out of memory on section" );
                 return count;
@@ -104,7 +104,7 @@ parse_ini (char * filename, void * data, callback handler ){
         // get the key
         *end = '\0';
         start = rstrip (start);
-        key = (char *) realloc( key, sizeof(char) * (end - start + 1) );
+        key = (char *) realloc( key, sizeof(char) * ( strlen(start) + 1) );
         if( !key ){
             ERROR( "Out of memory on key" );
             return count;
@@ -115,7 +115,7 @@ parse_ini (char * filename, void * data, callback handler ){
         start = end + 1;
         start = lstrip (start);
         end = start + strlen(start)-1;
-        value = (char *) realloc( value, sizeof(char) * (end - start + 1) );
+        value = (char *) realloc( value, sizeof(char) * ( strlen(start) + 1) );
         if( !value ){
             ERROR( "Out of memory on value" );
             return count;
@@ -124,7 +124,7 @@ parse_ini (char * filename, void * data, callback handler ){
 
         // Call user defined handler
             // (send section safely for next iteration)
-        char * section_copy = (char *) malloc( sizeof(char) * strlen(section) );
+        char * section_copy = (char *) malloc( sizeof(char) *( strlen(section) +1 ));
         if( ! section_copy){
             ERROR( "Out of memory on section copy" );
             return count;
