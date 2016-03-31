@@ -1,6 +1,9 @@
 #include<iniparse.h>
 
 #define eprintf(format, args...) fprintf (stderr, format , ##args)
+#define FREE(a) if(a!=NULL) free(a);
+#define MATCH(a,b) !strcmp(a,b)
+
 typedef struct {
     char * name;
     char * username;
@@ -18,7 +21,6 @@ void delete_account( account_t * account);
 int account_set_field( char ** field, char * value);
 void print_account( account_t * account );
 
-#define MATCH(a,b) !strcmp(a,b)
 int read_conf ( char * section, char * key, char * value, void * data){
     printf("SECTION:%s\tKEY:%s\tVALUE:%s\t\n", section, key, value);
     account_list * accounts = (account_list *) data;
@@ -73,6 +75,7 @@ int main(int argc, char * argv []){
     for(i=0; i<accounts.size; i++){
         delete_account(accounts.account[i]);
     }
+    FREE(accounts.account);
     return 0;
 }
 
@@ -90,7 +93,6 @@ account_t * create_account( void ){
     return account;
 }
 
-#define FREE(a) if(a!=NULL) free(a);
 void delete_account( account_t * account ){
     FREE(account->name);
     FREE(account->username);
