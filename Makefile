@@ -21,6 +21,13 @@ TARGET = libiniparser.a
 INSTALL_PREFIX	?= /usr
 HEADERS	= include/iniparse.h
 
+#-- EXAMPLE
+EXAMPLE_TARGET = examples/email_example
+EXAMPLE_SRC = examples/example.c
+
+
+
+
 all: $(TARGET)
 
 # TARGET need all the objects
@@ -35,6 +42,7 @@ $(OBJS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 # Remove build directory and target file
 clean:
 	rm -rf $(OBJDIR) $(TARGET)
+	rm -f $(EXAMPLE_TARGET)
 
 install: all
 	# Install headers
@@ -48,4 +56,8 @@ uninstall:
 	rm -f $(INSTALL_PREFIX)/$(HEADERS)
 	rm -f $(INSTALL_PREFIX)/lib/$(TARGET)
 
-.PHONY: all clean install
+
+examples: all $(EXAMPLE)
+	$(CC) $(CFLAGS) -o $(EXAMPLE_TARGET) $(EXAMPLE_SRC) -L. -liniparser
+
+.PHONY: all clean install uninstall examples
